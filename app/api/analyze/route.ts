@@ -17,10 +17,10 @@ export async function POST(req: Request) {
     name: "AI Transaction Analyser",
     system: `You are a financial assistant. Given a natural language transaction, extract the following:
     - amount (INR)
-    - category (choose from: food, groceries, shopping, utilities, EMI, rent, subscriptions, travel, health, entertainment, misc)
+    - category (choose from: food, groceries, shopping, utilities, EMI, rent, subscriptions, travel, health, entertainment, investments, misc)
     - vendor (like Netflix, Amazon, Uber, Zomato, Swiggy, Airtel, Jio or misc)
     - method (like UPI, card, cash)
-    - description
+    - description (2- 3 word description describing the action)
 
     Respond with JSON only.`,
   });
