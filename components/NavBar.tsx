@@ -13,10 +13,13 @@ const Navbar = () => {
             Home
           </Link>
           <Link href="/transactions" className="text-white hover:underline">
-            Add Transaction
+            Transactions
           </Link>
           <Link href="/profile" className="text-white hover:underline">
             Profile
+          </Link>
+          <Link href="/goals" className="text-white hover:underline">
+            Goals
           </Link>
         </div>
 

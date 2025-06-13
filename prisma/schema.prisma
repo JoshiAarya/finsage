@@ -15,39 +15,40 @@ datasource db {
 }
 
 model User {
-  id           String        @id @default(uuid())
-  name         String
-  email        String        @unique
-  password     String
-  transactions Transaction[]
-  goals        Goal[]
+  id            String        @id @default(uuid())
+  name          String
+  email         String        @unique
+  password      String
+  monthlyIncome Decimal
+  transactions  Transaction[]
+  goals         Goal[]
 }
 
 model Transaction {
-  id             String    @id @default(uuid())
-  user           User      @relation(fields: [userId], references: [id])
-  userId         String
+  id     String @id @default(uuid())
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 
-  amount         Decimal   @db.Decimal(10, 2)
-  currency       String    @default("INR")
+  amount   Decimal @db.Decimal(10, 2)
+  currency String  @default("INR")
 
-  category       String    // e.g., "Food", "Rent", "Subscriptions"
-  description    String?   // Freeform e.g., "Pizza from Zomato"
-  vendor         String?   // Optional, like Zomato or Airtel
-  method         String?   // e.g., UPI, Card
+  category    String // e.g., "Food", "Rent", "Subscriptions"
+  description String? // Freeform e.g., "Pizza from Zomato"
+  vendor      String? // Optional, like Zomato or Airtel
+  method      String? // e.g., UPI, Card
 
-  originalInput  String?   // Raw input from user (natural language)
-  createdAt      DateTime  @default(now())
+  originalInput String? // Raw input from user (natural language)
+  createdAt     DateTime @default(now())
 }
 
 model Goal {
-  id             String    @id @default(uuid())
-  user           User      @relation(fields: [userId], references: [id])
-  userId         String
+  id     String @id @default(uuid())
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
 
-  name           String
-  targetAmount   Decimal   @db.Decimal(10, 2)
-  currentAmount  Decimal   @default(0.00) @db.Decimal(10, 2)
-  deadline       DateTime?
-  createdAt      DateTime  @default(now())
+  name          String
+  targetAmount  Decimal   @db.Decimal(10, 2)
+  currentAmount Decimal   @default(0.00) @db.Decimal(10, 2)
+  deadline      DateTime?
+  createdAt     DateTime  @default(now())
 }
