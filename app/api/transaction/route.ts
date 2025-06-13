@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { PrismaClient } from "../../generated/prisma";
 import { NextResponse } from "next/server";
+import { error } from "console";
 
 const prisma = new PrismaClient();
 
@@ -21,6 +22,12 @@ export async function POST(req: Request) {
 
     const body = await req.json();
     const { amount, category, description, vendor, method, originalInput } = body;
+
+    if(amount<=0){
+        return NextResponse.json({error: "Amount must be positive"}, {
+            status: 400
+        });
+    }
 
     try {
         const transaction = await prisma.transaction.create({

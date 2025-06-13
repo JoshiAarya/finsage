@@ -59,7 +59,7 @@ const Dashboard = () => {
 
         <select value={category} onChange={(e) => setCategory(e.target.value)} className="p-2 border rounded">
           <option value="">All Categories</option>
-          {["food", "groceries", "shopping", "utilities", "EMI", "rent", "subscriptions", "travel", "health", "entertainment", "misc"].map((c) => (
+          {["food", "groceries", "shopping", "utilities", "EMI", "rent", "subscriptions", "travel", "health", "entertainment", "misc", "investments"].map((c) => (
             <option key={c} value={c}>{c}</option>
           ))}
         </select>
