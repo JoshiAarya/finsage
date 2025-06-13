@@ -20,7 +20,7 @@ export async function POST(req: Request) {
       data: { monthlyIncome },
     });
   
-    return NextResponse.json({ message: "Income updated", user }, {status: 200});
+    return NextResponse.json({ message: "Income updated", data: user }, {status: 200});
   } catch (error) {
     return NextResponse.json({ error: "Something went wrong"}, {status: 500});
   }
